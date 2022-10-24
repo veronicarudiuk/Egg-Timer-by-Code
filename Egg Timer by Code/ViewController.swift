@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
 
@@ -17,3 +18,22 @@ class ViewController: UIViewController {
 
 }
 
+
+
+struct SwiftUIController: UIViewControllerRepresentable {
+    typealias UIViewControllerType = ViewController
+    
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        let viewController = UIViewControllerType()
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: ViewController, context: Context) {
+    }
+}
+
+struct SwiftUIController_Previews: PreviewProvider {
+    static var previews: some View {
+        SwiftUIController()
+    }
+}
