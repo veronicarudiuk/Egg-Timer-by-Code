@@ -10,7 +10,6 @@ import SwiftUI
 
 class ViewController: UIViewController {
     
-    //    let softImage = UIImageView(image: UIImage(named: "Soft egg"))
     let softButton = UIButton()
     let mediumButton = UIButton()
     let hardButton = UIButton()
@@ -22,23 +21,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.7949336767, green: 0.9477056861, blue: 0.9900913835, alpha: 1)
         
+//        настройка лейбла
         let title = UILabel()
         title.text = "How do you like your eggs?"
         title.font = .systemFont(ofSize: 30)
         title.textColor = .darkGray
         title.textAlignment = .center
         
+//        настройка кнопок
         let softView = UIView(button: softButton, image: softImage, title: "Soft")
         let mediumView = UIView(button: mediumButton, image: mediumImage, title: "Medium")
         let hardView = UIView(button: hardButton, image: hardImage, title: "Hard")
-
-        
-        
         let eggStackView = UIStackView(arrangedSubviews: [softView, mediumView, hardView])
         eggStackView.axis = .horizontal
         eggStackView.distribution = .fillEqually
         eggStackView.spacing = 20
         
+//        настройка прогресс вью
         let progressBar = UIProgressView(progressViewStyle: .bar)
         progressBar.progressTintColor = .systemYellow
         progressBar.trackTintColor = .systemGray
@@ -51,6 +50,7 @@ class ViewController: UIViewController {
             progressBar.trailingAnchor.constraint(equalTo: progressView.trailingAnchor),
         ])
         
+//        настройка стак вью
         let mainStackView = UIStackView(arrangedSubviews: [title, eggStackView, progressView])
         mainStackView.axis = .vertical
         mainStackView.distribution = .fillEqually
@@ -59,13 +59,15 @@ class ViewController: UIViewController {
         view.addSubview(mainStackView)
         
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
+
+// возможность во вью помещать кнопку с картинкой с общими настройками
 extension UIView {
     convenience init(button: UIButton, image: UIImageView, title: String) {
         self.init()
@@ -89,7 +91,7 @@ extension UIView {
     }
 }
 
-
+//превью свифт юай
 struct SwiftUIController: UIViewControllerRepresentable {
     typealias UIViewControllerType = ViewController
     
