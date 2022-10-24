@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -16,19 +17,24 @@ class ViewController: UIViewController {
     let softImage = UIImageView(image: UIImage(named: "Soft"))
     let mediumImage = UIImageView(image: UIImage(named: "Medium"))
     let hardImage = UIImageView(image: UIImage(named: "Hard"))
+    let titlel = UILabel()
+    let progressBar = UIProgressView(progressViewStyle: .bar)
+    
+    let eggTimes = ["Soft": 3, "Medium": 4, "Hard": 7]
+    var timer = Timer()
+    var player: AVPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.7949336767, green: 0.9477056861, blue: 0.9900913835, alpha: 1)
         
-//        настройка лейбла
-        let title = UILabel()
-        title.text = "How do you like your eggs?"
-        title.font = .systemFont(ofSize: 30)
-        title.textColor = .darkGray
-        title.textAlignment = .center
+        //        настройка лейбла
+        titlel.text = "How do you like your eggs?"
+        titlel.font = .systemFont(ofSize: 30)
+        titlel.textColor = .darkGray
+        titlel.textAlignment = .center
         
-//        настройка кнопок
+        //        настройка кнопок
         let softView = UIView(button: softButton, image: softImage, title: "Soft")
         let mediumView = UIView(button: mediumButton, image: mediumImage, title: "Medium")
         let hardView = UIView(button: hardButton, image: hardImage, title: "Hard")
@@ -37,8 +43,11 @@ class ViewController: UIViewController {
         eggStackView.distribution = .fillEqually
         eggStackView.spacing = 20
         
-//        настройка прогресс вью
-        let progressBar = UIProgressView(progressViewStyle: .bar)
+        softButton.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        mediumButton.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        hardButton.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
+        
+        //        настройка прогресс вью
         progressBar.progressTintColor = .systemYellow
         progressBar.trackTintColor = .systemGray
         let progressView = UIView()
@@ -50,8 +59,8 @@ class ViewController: UIViewController {
             progressBar.trailingAnchor.constraint(equalTo: progressView.trailingAnchor),
         ])
         
-//        настройка стак вью
-        let mainStackView = UIStackView(arrangedSubviews: [title, eggStackView, progressView])
+        //        настройка стак вью
+        let mainStackView = UIStackView(arrangedSubviews: [titlel, eggStackView, progressView])
         mainStackView.axis = .vertical
         mainStackView.distribution = .fillEqually
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,8 +74,32 @@ class ViewController: UIViewController {
             mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
+    
+    @objc func onClick(_ sender: UIButton!) {
+        let hardness = sender.currentTitle!
+        let totalTime = eggTimes[hardness]!
+        var passedTime = 0
+        timer.invalidate()
+        self.titlel.text = hardness
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
+            if passedTime < totalTime {
+                passedTime += 1
+                self.progressBar.progress = Float(passedTime) / Float(totalTime)
+            } else {
+                Timer.invalidate()
+                self.titlel.text = "Done!"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    self.titlel.text = "How do you like your eggs?"
+                    self.progressBar.progress = 0.0
+                }
+                let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+                self.player = AVPlayer.init(url: url!)
+                self.player.play()
+            }
+        }
+    }
 }
-
 // возможность во вью помещать кнопку с картинкой с общими настройками
 extension UIView {
     convenience init(button: UIButton, image: UIImageView, title: String) {
