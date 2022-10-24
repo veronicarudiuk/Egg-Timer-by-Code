@@ -12,6 +12,7 @@
 		58BFCBFC2906B3AB00B3425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BFCBFB2906B3AB00B3425E /* ViewController.swift */; };
 		58BFCC012906B3B000B3425E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58BFCC002906B3B000B3425E /* Assets.xcassets */; };
 		58BFCC042906B3B000B3425E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58BFCC022906B3B000B3425E /* LaunchScreen.storyboard */; };
+		58BFCC0C2906BAA900B3425E /* alarm_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 58BFCC0B2906BAA800B3425E /* alarm_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		58BFCC002906B3B000B3425E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58BFCC032906B3B000B3425E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58BFCC052906B3B000B3425E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58BFCC0B2906BAA800B3425E /* alarm_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				58BFCBFB2906B3AB00B3425E /* ViewController.swift */,
 				58BFCC002906B3B000B3425E /* Assets.xcassets */,
 				58BFCC022906B3B000B3425E /* LaunchScreen.storyboard */,
+				58BFCC0B2906BAA800B3425E /* alarm_sound.mp3 */,
 				58BFCC052906B3B000B3425E /* Info.plist */,
 			);
 			path = "Egg Timer by Code";
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58BFCC042906B3B000B3425E /* LaunchScreen.storyboard in Resources */,
+				58BFCC0C2906BAA900B3425E /* alarm_sound.mp3 in Resources */,
 				58BFCC012906B3B000B3425E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,8 +284,8 @@
 				INFOPLIST_FILE = "Egg Timer by Code/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,8 +311,8 @@
 				INFOPLIST_FILE = "Egg Timer by Code/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
